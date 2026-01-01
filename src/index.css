@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* Luxury Yacht Design System - Classy & Minimalistic */
+
+@layer base {
+  :root {
+    /* Core palette - Deep navy, gold, ivory */
+    --background: 210 40% 98%;
+    --foreground: 220 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 10%;
+
+    /* Navy primary */
+    --primary: 220 50% 12%;
+    --primary-foreground: 45 30% 96%;
+
+    /* Champagne gold accent */
+    --secondary: 43 45% 60%;
+    --secondary-foreground: 220 50% 12%;
+
+    /* Soft pearl muted */
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 15% 45%;
+
+    /* Gold accent */
+    --accent: 43 50% 55%;
+    --accent-foreground: 220 50% 12%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 43 50% 55%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --navy: 220 50% 12%;
+    --navy-light: 220 40% 20%;
+    --gold: 43 50% 55%;
+    --gold-light: 43 45% 70%;
+    --ivory: 45 30% 96%;
+    --pearl: 210 20% 94%;
+    
+    /* Logo color control */
+    --logo-invert: 0;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg, hsla(220, 50%, 12%, 0.7) 0%, hsla(220, 50%, 12%, 0.3) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43, 50%, 55%) 0%, hsl(43, 45%, 70%) 100%);
+    --gradient-navy: linear-gradient(180deg, hsl(220, 50%, 12%) 0%, hsl(220, 40%, 20%) 100%);
+
+    /* Shadows */
+    --shadow-elegant: 0 4px 30px hsla(220, 50%, 12%, 0.08);
+    --shadow-card: 0 2px 20px hsla(220, 50%, 12%, 0.06);
+    --shadow-gold: 0 4px 20px hsla(43, 50%, 55%, 0.25);
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Montserrat', system-ui, sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 50% 8%;
+    --foreground: 45 30% 96%;
+
+    --card: 220 45% 12%;
+    --card-foreground: 45 30% 96%;
+
+    --popover: 220 45% 12%;
+    --popover-foreground: 45 30% 96%;
+
+    --primary: 45 30% 96%;
+    --primary-foreground: 220 50% 12%;
+
+    --secondary: 43 45% 55%;
+    --secondary-foreground: 220 50% 12%;
+
+    --muted: 220 40% 18%;
+    --muted-foreground: 210 20% 65%;
+
+    --accent: 43 50% 55%;
+    --accent-foreground: 220 50% 12%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 35% 20%;
+    --input: 220 35% 20%;
+    --ring: 43 50% 55%;
+
+    --navy: 220 50% 12%;
+    --navy-light: 220 40% 20%;
+    --gold: 43 50% 55%;
+    --gold-light: 43 45% 70%;
+    --ivory: 45 30% 96%;
+    --pearl: 220 40% 18%;
+    
+    /* Logo color control - invert for dark mode */
+    --logo-invert: 1;
+
+    --sidebar-background: 220 50% 8%;
+    --sidebar-foreground: 45 30% 96%;
+    --sidebar-primary: 43 50% 55%;
+    --sidebar-primary-foreground: 220 50% 12%;
+    --sidebar-accent: 220 40% 15%;
+    --sidebar-accent-foreground: 45 30% 96%;
+    --sidebar-border: 220 35% 20%;
+    --sidebar-ring: 43 50% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  .section-padding {
+    @apply py-20 md:py-32 px-6 md:px-12 lg:px-20;
+  }
+
+  .container-elegant {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .divider-gold {
+    @apply w-16 h-[1px] bg-accent;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  /* White calendar icon for date input in dark sections */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.8s ease-out forwards;
+  }
+
+  .animate-blink {
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+@layer utilities {
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+}
