@@ -1,8 +1,53 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import heroVideo from "@/assets/hero-yacht-high.mp4";
+import { useEffect, useRef } from "react";
 
 const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const playVideo = async () => {
+      try {
+        video.muted = true;
+        video.playsInline = true;
+        video.loop = true;
+        
+        await video.play();
+      } catch (error) {
+        setTimeout(() => {
+          video.play().catch(() => {
+          });
+        }, 100);
+      }
+    };
+
+    if (video.readyState >= 3) {
+      playVideo();
+    } else {
+      video.addEventListener('loadeddata', playVideo);
+      video.load();
+    }
+    
+    const handleInteraction = () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      }
+    };
+
+    document.addEventListener('touchstart', handleInteraction, { once: true });
+    document.addEventListener('click', handleInteraction, { once: true });
+
+    return () => {
+      video.removeEventListener('loadeddata', playVideo);
+      document.removeEventListener('touchstart', handleInteraction);
+      document.removeEventListener('click', handleInteraction);
+    };
+  }, []);
+  
   return (
     <section 
       className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
@@ -11,12 +56,17 @@ const HeroSection = () => {
       {/* Background Video */}
       <div className="absolute inset-0">
         <video
+          ref={videoRef}
           src={heroVideo}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
           className="w-full h-full object-cover"
+          style={{ aspectRatio: '16/9' }}
           aria-hidden="true"
           title="SV Iron Monkey sailing in the Mediterranean"
         />
