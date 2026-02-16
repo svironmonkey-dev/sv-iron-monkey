@@ -1,4 +1,5 @@
-import { Instagram, Facebook, Mail, Linkedin, Youtube } from "lucide-react";
+import { Instagram, Linkedin, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
 import ironLogo from "@/assets/iron-logo.svg";
 import redEnsignLogo from "@/assets/red-ensign.png";
 import mcaLogo from "@/assets/ mca.png";
@@ -9,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground border-t border-primary-foreground/10" role="contentinfo">
       <div className="container-elegant section-padding pb-8">
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
             <div className="mb-6">
@@ -127,6 +128,39 @@ const Footer = () => {
               Balearic Islands, Spain
             </address>
           </div>
+
+          {/* Legal */}
+          <nav aria-label="Legal links">
+            <h3 className="text-xs tracking-[0.3em] uppercase mb-6">
+              Legal
+            </h3>
+            <ul className="space-y-3" role="list">
+              <li>
+                <Link
+                  to="/legal-notice"
+                  className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
+                >
+                  Legal Notice
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/privacy-policy"
+                  className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/cookie-policy"
+                  className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
+                >
+                  Cookie Policy
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         {/* Bottom Bar */}

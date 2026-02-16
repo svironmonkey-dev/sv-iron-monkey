@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, CheckCircle2, Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useState, useRef } from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
@@ -9,6 +10,7 @@ const ContactSection = () => {
   const [formState, setFormState] = useState<FormState>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [privacyConsent, setPrivacyConsent] = useState(false);
   const turnstileRef = useRef<any>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -66,6 +68,7 @@ const ContactSection = () => {
     setFormState('idle');
     setErrorMessage('');
     setTurnstileToken(null);
+    setPrivacyConsent(false);
     turnstileRef.current?.reset();
   };
 
@@ -245,6 +248,34 @@ const ContactSection = () => {
                   />
                 </div>
 
+                {/* Privacy Consent */}
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="privacy-consent"
+                    name="privacyConsent"
+                    checked={privacyConsent}
+                    onChange={(e) => setPrivacyConsent(e.target.checked)}
+                    className="mt-1 w-4 h-4 accent-accent cursor-pointer flex-shrink-0"
+                    required
+                    aria-required="true"
+                  />
+                  <label 
+                    htmlFor="privacy-consent" 
+                    className="text-primary-foreground/70 text-sm leading-relaxed cursor-pointer"
+                  >
+                    I have read and accept the{" "}
+                    <Link 
+                      to="/privacy-policy" 
+                      className="text-accent hover:underline"
+                      target="_blank"
+                    >
+                      Privacy Policy
+                    </Link>{" "}
+                    and consent to the processing of my personal data.
+                  </label>
+                </div>
+
                 {/* Turnstile */}
                 <div className="flex justify-center">
                   <Turnstile
@@ -256,7 +287,7 @@ const ContactSection = () => {
                   />
                 </div>
 
-                <Button variant="gold" size="lg" className="w-full mt-4" type="submit" disabled={!turnstileToken}>
+                <Button variant="gold" size="lg" className="w-full mt-4" type="submit" disabled={!turnstileToken || !privacyConsent}>
                   Send Inquiry
                 </Button>
               </form>
