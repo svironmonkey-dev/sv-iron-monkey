@@ -79,15 +79,15 @@ const ContactSection = () => {
           {/* Content */}
           <div>
             <span className="text-accent text-xs tracking-[0.4em] uppercase mb-4 block">
-              Start Your Journey
+              Contact Us
             </span>
             <h2 id="contact-heading" className="font-serif text-4xl md:text-5xl font-light mb-8">
-              Book Your Charter
+              Any questions?
             </h2>
             <div className="w-16 h-[1px] bg-accent mb-8" aria-hidden="true" />
             
             <p className="text-primary-foreground/80 text-lg leading-relaxed mb-10">
-              Ready to embark on your adventure? Contact us to discuss your perfect 
+              Any questions about our services? Contact us to discuss your perfect 
               charter experience. We'll help you plan every detail for an unforgettable voyage.
             </p>
 
@@ -140,7 +140,7 @@ const ContactSection = () => {
           </div>
 
           {/* Form */}
-          <div className="bg-primary-foreground/5 border border-primary-foreground/10 p-8 md:p-10 min-h-[540px] flex flex-col">
+          <div className="bg-primary-foreground/5 border border-primary-foreground/10 p-8 md:p-10 flex flex-col">
             {/* Sending State */}
             {formState === 'sending' && (
               <div className="flex flex-col items-center justify-center flex-1">
@@ -204,35 +204,6 @@ const ContactSection = () => {
                       aria-required="true"
                     />
                   </div>
-                </div>
-
-                <div>
-                  <label htmlFor="contact-experience" className="text-[10px] tracking-[0.2em] uppercase text-primary-foreground/60 block mb-2">
-                    Experience Type
-                  </label>
-                  <select 
-                    id="contact-experience"
-                    name="experience"
-                    className="w-full bg-transparent border-b border-primary-foreground/20 pb-2 text-primary-foreground focus:border-accent focus:outline-none transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="" className="text-foreground">Select an option</option>
-                    <option value="sunset" className="text-foreground">Sunset Cruise</option>
-                    <option value="day" className="text-foreground">Day Trip</option>
-                    <option value="multiple" className="text-foreground">Multiple days</option>
-                    <option value="custom" className="text-foreground">Custom Charter</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="contact-date" className="text-[10px] tracking-[0.2em] uppercase text-primary-foreground/60 block mb-2">
-                    Preferred Date
-                  </label>
-                  <input
-                    id="contact-date"
-                    name="date"
-                    type="date"
-                    className="w-full bg-transparent border-b border-primary-foreground/20 pb-2 text-primary-foreground focus:border-accent focus:outline-none transition-colors"
-                  />
                 </div>
 
                 <div>

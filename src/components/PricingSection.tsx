@@ -22,7 +22,7 @@ const PricingSection = () => {
           <Button
             variant="gold"
             size="lg"
-            onClick={() => navigate("/pricing")}
+            onClick={() => window.open("https://booking.svironmonkey.nl", "_blank")}
           >
             View Pricing Plans
           </Button>

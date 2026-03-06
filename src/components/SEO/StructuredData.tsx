@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 interface StructuredDataProps {
-  type?: 'home' | 'pricing' | 'facilities';
+  type?: 'home' | 'facilities';
 }
 
 const StructuredData = ({ type = 'home' }: StructuredDataProps) => {
@@ -136,14 +136,6 @@ const StructuredData = ({ type = 'home' }: StructuredDataProps) => {
         "name": "Home",
         "item": "https://svironmonkey.nl/"
       },
-      ...(type === 'pricing' ? [
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Pricing",
-          "item": "https://svironmonkey.nl/pricing"
-        }
-      ] : []),
       ...(type === 'facilities' ? [
         {
           "@type": "ListItem",

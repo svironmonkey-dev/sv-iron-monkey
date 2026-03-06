@@ -100,7 +100,7 @@ const Header = () => {
               size="sm"
               asChild
             >
-              <a href={isHomePage ? "#contact" : "/#contact"}>Book Now</a>
+              <a href={"https://booking.svironmonkey.nl"} target="_blank">Book Now</a>
             </Button>
           </div>
 

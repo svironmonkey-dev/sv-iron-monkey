@@ -144,7 +144,7 @@ const IslandsSection = () => {
             Ready to explore the Balearic Islands? Contact us to create your perfect sailing itinerary.
           </p>
           <Button variant="gold" size="lg" asChild>
-            <a href="#contact">Book Your Voyage</a>
+            <a href="https://booking.svironmonkey.nl" target="_blank">Book Your Voyage</a>
           </Button>
         </div>
       </div>

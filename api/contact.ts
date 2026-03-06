@@ -57,14 +57,6 @@ const createOwnerEmailHtml = (data: any) => `
             <div class="value"><a href="mailto:${data.email}">${data.email}</a></div>
           </div>
           <div class="field">
-            <div class="label">Experience Type:</div>
-            <div class="value">${data.experience || 'Not specified'}</div>
-          </div>
-          <div class="field">
-            <div class="label">Preferred Date:</div>
-            <div class="value">${data.date || 'Not specified'}</div>
-          </div>
-          <div class="field">
             <div class="label">Message:</div>
             <div class="value">${data.message || 'No message provided'}</div>
           </div>
@@ -102,16 +94,12 @@ const createConfirmationEmailHtml = (data: any) => `
         <div class="content">
           <p>Dear ${data.name},</p>
           
-          <p>Thank you for your interest in chartering with SV Iron Monkey. We have received your inquiry and are excited to help you plan your perfect maritime adventure.</p>
+          <p>Thank you for your interest in chartering with SV Iron Monkey. We have received your inquiry and our team will get back to you shortly.</p>
           
           <div class="highlight">
             <h3>Your Inquiry Details:</h3>
-            <p><strong>Experience Type:</strong> ${data.experience || 'Not specified'}</p>
-            <p><strong>Preferred Date:</strong> ${data.date || 'Not specified'}</p>
             ${data.message ? `<p><strong>Your Message:</strong> ${data.message}</p>` : ''}
           </div>
-          
-          <p>Our team will review your request and get back to you within 24 hours to discuss availability, pricing, and any special requirements you may have.</p>
           
           <div class="contact-info">
             <h3>In the Meantime:</h3>
@@ -144,7 +132,7 @@ export default async function handler(
   }
 
   try {
-    const { name, email, experience, date, message, turnstileToken } = req.body;
+    const { name, email, message, turnstileToken } = req.body;
 
     // Validate Turnstile token
     if (!turnstileToken) {
@@ -177,7 +165,7 @@ export default async function handler(
     // Initialize Resend
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const formData = { name, email, experience, date, message };
+    const formData = { name, email, message };
 
     // Send both emails
     const [ownerEmail, confirmationEmail] = await Promise.all([
