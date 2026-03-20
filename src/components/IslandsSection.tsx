@@ -126,7 +126,7 @@ const IslandsSection = () => {
 
                 {/* CTA */}
                 <a
-                  href="#contact"
+                  href={"https://booking.svironmonkey.nl/"}
                   className="inline-flex items-center gap-2 text-foreground text-sm font-medium hover:text-accent transition-colors group"
                   aria-label={`Plan your journey to ${island.name}`}
                 >

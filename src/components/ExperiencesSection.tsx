@@ -23,7 +23,7 @@ const experiences = [
     duration: "4 hours",
   },
   {
-    title: "Week Charters",
+    title: "Overnight Charter",
     subtitle: "Complete Luxury",
     description:
       "Embark on a week-long adventure exploring the entire Balearic archipelago. Fully customizable itinerary with overnight stays.",
@@ -82,7 +82,8 @@ const ExperiencesSection = () => {
                     {experience.duration}
                   </span>
                   <a
-                    href="#contact"
+                    href={"https://booking.svironmonkey.nl/en/activities/"}
+                    target="_blank"
                     className="flex items-center gap-2 text-foreground text-sm font-medium hover:text-accent transition-colors group/link"
                     aria-label={`Learn more about ${experience.title}`}
                   >
@@ -98,7 +99,7 @@ const ExperiencesSection = () => {
         {/* CTA */}
         <div className="text-center mt-16">
           <Button variant="outline" size="lg" asChild>
-            <a href="#contact">Request Custom Charter</a>
+            <a href={"https://booking.svironmonkey.nl"} target="_blank">Request Custom Charter</a>
           </Button>
         </div>
       </div>
