@@ -82,7 +82,7 @@ const ExperiencesSection = () => {
                     {experience.duration}
                   </span>
                   <a
-                    href={"https://booking.svironmonkey.nl/en/activities/"}
+                    href={"https://booking.svironmonkey.nl/en"}
                     target="_blank"
                     className="flex items-center gap-2 text-foreground text-sm font-medium hover:text-accent transition-colors group/link"
                     aria-label={`Learn more about ${experience.title}`}
