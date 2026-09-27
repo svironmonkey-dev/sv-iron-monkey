@@ -15,7 +15,7 @@ const StructuredData = ({ type = 'home' }: StructuredDataProps) => {
     "url": "https://svironmonkey.nl",
     "logo": "https://svironmonkey.nl/logo.png",
     "description": "Luxury yacht charter service in Mallorca and the Balearic Islands offering day trips, sunset cruises, and private voyages.",
-    "image": "https://svironmonkey.nl/og-image.jpg",
+    "image": "https://www.svironmonkey.nl/iron-monkey-under-sail.jpg",
     "telephone": "+34-XXX-XXX-XXX",
     "email": "info@svironmonkey.nl",
     "address": {
@@ -106,7 +106,7 @@ const StructuredData = ({ type = 'home' }: StructuredDataProps) => {
       "name": "Iron Monkey"
     },
     "category": "Yacht Charter",
-    "image": "https://svironmonkey.nl/og-image.jpg",
+    "image": "https://www.svironmonkey.nl/iron-monkey-under-sail.jpg",
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "EUR",
@@ -152,7 +152,7 @@ const StructuredData = ({ type = 'home' }: StructuredDataProps) => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "SV Iron Monkey",
-    "image": "https://svironmonkey.nl/og-image.jpg",
+    "image": "https://www.svironmonkey.nl/iron-monkey-under-sail.jpg",
     "@id": "https://svironmonkey.nl",
     "url": "https://svironmonkey.nl",
     "telephone": "+34-XXX-XXX-XXX",
