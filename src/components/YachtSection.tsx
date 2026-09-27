@@ -1,6 +1,5 @@
 import { Anchor, Compass, Users, Waves, ChevronDown, Ship, Ruler, Gauge, Fuel, Droplet, BedDouble, UserCog } from "lucide-react";
 import { useState, useRef } from "react";
-import LazyImage from "./LazyImage";
 
 const features = [
   {
@@ -87,10 +86,14 @@ const YachtSection = () => {
           {/* Image */}
           <figure className="relative mb-12">
             <div className="aspect-[16/9] overflow-hidden">
-              <LazyImage
+              <img
                 src="/iron-monkey-under-sail.jpg"
                 alt="SV Iron Monkey under full sail on blue water off Mallorca"
                 className="w-full h-full object-cover"
+                width="2880"
+                height="1800"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </figure>
