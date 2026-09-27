@@ -2,7 +2,7 @@ import dayImage from "@/assets/yacht-deck.png";
 import sunsetImage from "@/assets/sunset-cruise.jpg";
 import daytimeDetailImage from "@/assets/out/out3.png";
 import cabinHeroImage from "@/assets/rooms/bed3.png";
-import cabinImage from "@/assets/rooms/bed1.png";
+import breakfastImage from "@/assets/breakfast/bf1.png";
 
 export type CharterSlug = "day-charter" | "sunset-cruise" | "overnight-charter";
 
@@ -85,8 +85,8 @@ export const charters: Record<CharterSlug, Charter> = {
     intro: "Make SV Iron Monkey your home on the water. Take time to explore, linger at anchor and discover a slower rhythm around the Balearic Islands.",
     image: cabinHeroImage,
     imageAlt: "A teak-lined guest cabin with freshly prepared beds aboard SV Iron Monkey",
-    detailImage: cabinImage,
-    detailAlt: "A guest cabin aboard SV Iron Monkey",
+    detailImage: breakfastImage,
+    detailAlt: "The breakfast table aboard SV Iron Monkey, set with fresh fruit, pastries and orange juice",
     duration: "A stay shaped around you",
     mood: "Explore · Stay · Discover",
     storyTitle: "A different view each morning.",
