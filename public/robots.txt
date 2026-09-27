@@ -39,7 +39,7 @@ User-agent: Pinterestbot
 Allow: /
 
 # Sitemap location
-Sitemap: https://svironmonkey.nl/sitemap.xml
+Sitemap: https://www.svironmonkey.nl/sitemap.xml
 
 # Host (preferred domain)
-Host: https://svironmonkey.nl
+Host: https://www.svironmonkey.nl
