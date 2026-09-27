@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { CookieConsentProvider } from "./contexts/CookieConsentContext";
 import Index from "./pages/Index";
 import Facilities from "./pages/Facilities";
+import Charter from "./pages/Charter";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -42,6 +43,9 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/facilities" element={<Facilities />} />
+              <Route path="/day-charter" element={<Charter slug="day-charter" />} />
+              <Route path="/sunset-cruise" element={<Charter slug="sunset-cruise" />} />
+              <Route path="/overnight-charter" element={<Charter slug="overnight-charter" />} />
               <Route path="/legal-notice" element={<LegalNotice />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
