@@ -102,7 +102,7 @@ const ExperiencesSection = () => {
         {/* CTA */}
         <div className="text-center mt-16">
           <Button variant="outline" size="lg" asChild>
-            <a href={"https://booking.svironmonkey.nl"} target="_blank">Request Custom Charter</a>
+            <Link to="/#contact">Request Custom Charter</Link>
           </Button>
         </div>
       </div>

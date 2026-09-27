@@ -25,7 +25,7 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
     { href: isHomePage ? "#islands" : "/#islands", label: "Islands" },
     { href: isHomePage ? "#crew" : "/#crew", label: "Crew" },
     { href: isHomePage ? "#facilities" : "/#facilities", label: "Facilities" },
-    { href: isHomePage ? "#pricing" : "/#pricing", label: "Pricing" },
+    { href: "/pricing", label: "Pricing" },
   ];
 
   // Hide header on scroll when on facilities page
@@ -100,7 +100,7 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
               size="sm"
               asChild
             >
-              <a href={enquiryHref || "https://booking.svironmonkey.nl"} target={enquiryHref ? undefined : "_blank"} rel={enquiryHref ? undefined : "noopener noreferrer"}>{enquiryHref ? "Enquire" : "Book Now"}</a>
+              <a href={enquiryHref || "/pricing#charter-options"}>{enquiryHref ? "Enquire" : "Plan Your Charter"}</a>
             </Button>
           </div>
 
@@ -148,10 +148,10 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
               <li className="pt-4">
                 <Button variant="gold" size="default" className="w-full" asChild>
                   <a 
-                    href={enquiryHref || (isHomePage ? "#contact" : "/#contact")}
+                    href={enquiryHref || "/pricing#charter-options"}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {enquiryHref ? "Enquire" : "Book Now"}
+                    {enquiryHref ? "Enquire" : "Plan Your Charter"}
                   </a>
                 </Button>
               </li>

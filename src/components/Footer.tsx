@@ -74,12 +74,12 @@ const Footer = () => {
                 { href: "#islands", label: "Islands" },
                 { href: "#crew", label: "Crew" },
                 { href: "#facilities", label: "Facilities" },
-                { href: "#pricing", label: "Pricing" },
+                { href: "/pricing", label: "Pricing" },
                 { href: "#contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
                   <a
-                    href={`${homePrefix}${link.href}`}
+                    href={link.href.startsWith("/") ? link.href : `${homePrefix}${link.href}`}
                     className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
                   >
                     {link.label}

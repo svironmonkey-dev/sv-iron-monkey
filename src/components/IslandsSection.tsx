@@ -126,7 +126,7 @@ const IslandsSection = () => {
 
                 {/* CTA */}
                 <a
-                  href={"https://booking.svironmonkey.nl/"}
+                  href="/overnight-charter"
                   className="inline-flex items-center gap-2 text-foreground text-sm font-medium hover:text-accent transition-colors group"
                   aria-label={`Plan your journey to ${island.name}`}
                 >
@@ -144,7 +144,7 @@ const IslandsSection = () => {
             Ready to explore the Balearic Islands? Contact us to create your perfect sailing itinerary.
           </p>
           <Button variant="gold" size="lg" asChild>
-            <a href="https://booking.svironmonkey.nl" target="_blank">Book Your Voyage</a>
+            <a href="/overnight-charter">Plan Your Voyage</a>
           </Button>
         </div>
       </div>
@@ -153,4 +153,3 @@ const IslandsSection = () => {
 };
 
 export default IslandsSection;
-
