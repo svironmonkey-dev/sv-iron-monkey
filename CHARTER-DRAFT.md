@@ -3,7 +3,7 @@
 Base: `main` at `1def85df6aa8f6c0c4b9de33d32f08b84191ca68`.
 Draft branch: `draft/charter-pages-2026-09-27`.
 
-The live website has not been deployed or changed. No changes have been pushed to GitHub. This draft uses the original React/Vite application, design tokens, fonts, components and images.
+The live website and main branch have not changed. The draft application files have been uploaded to the matching GitHub branch and deployed by Vercel as a preview. This draft uses the original React/Vite application, design tokens, fonts, components and images.
 
 ## Pages
 
@@ -48,11 +48,13 @@ Payload contract (example shape only; these dates are not real availability):
 
 Missing dates/experiences, malformed responses, fetch failures, future timestamps, expired snapshots or snapshots older than 15 minutes all display neutral. Status must be calculated separately for each charter: a sunset booking does not automatically mean the entire day is occupied. Keep booking/calendar credentials on the server, never in the frontend or a public repository.
 
-## Access needed to finish the preview and release
+## Access and preview status — updated 27 September 2026
 
-1. GitHub connection with permission to write a draft branch in `svironmonkey-dev/sv-iron-monkey`; public read access works already.
-2. Vercel project connection for preview deployment in `sv-iron-monkeys-projects/sv-iron-monkey`. Browser account access was verified, but the Vercel plugin connection is not completed.
-3. Authoritative booking feed and read-only server access. Decide whether this comes from the owner hub/master or an accurately synchronised booking calendar.
+- GitHub owner access verified in the authenticated browser; draft branch is published. The ChatGPT GitHub plugin remains unconnected.
+- Vercel preview works: https://sv-iron-monkey-git-draft-charte-720bc0-sv-iron-monkeys-projects.vercel.app/day-charter
+- All three pages render; day-charter selection generated correct email and WhatsApp enquiry links. No test enquiries were sent. Direct overnight-page reload works.
+- Google Photos access verified for svironmonkey@gmail.com. Albums located; replacements have not yet been selected or added.
+- Real availability integration remains outstanding. An authoritative feed is required before dates can show green/red reliably.
 
 No cPanel, Resend or WhatsApp API credentials are needed for the two click-to-enquire buttons. The existing enquiry form and production integrations are unchanged. Use secure sign-in/connector prompts for access rather than passwords in chat.
 
@@ -79,4 +81,4 @@ npx eslint src/pages/Charter.tsx src/components/CharterBooking.tsx src/lib/chart
 
 The project uses the original `bun.lockb`; neither that lockfile nor package.json was changed. Frozen install with the available newer Bun could not use the old lock without migration, so local checks used npm without writing a replacement lockfile. A production release should repeat validation in the project's established build environment.
 
-Browser visual verification is outstanding because the cloud browser cannot access the local development server. Full TypeScript checking also reports six pre-existing type assertions in `src/components/MetaPixel.tsx`; that file is unchanged in this draft. The build has an existing CSS font-import ordering warning.
+The hosted preview has been checked at desktop width. Mobile review remains outstanding. The local check script has not yet been uploaded to GitHub. Full TypeScript checking also reports six pre-existing type assertions in `src/components/MetaPixel.tsx`; that file is unchanged in this draft. The build has an existing CSS font-import ordering warning.
