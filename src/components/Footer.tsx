@@ -1,11 +1,12 @@
 import { Instagram, Linkedin, Youtube } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ironLogo from "@/assets/iron-logo.svg";
 import redEnsignLogo from "@/assets/red-ensign.png";
 import mcaLogo from "@/assets/ mca.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const homePrefix = useLocation().pathname === "/" ? "" : "/";
 
   return (
     <footer className="bg-primary text-primary-foreground border-t border-primary-foreground/10" role="contentinfo">
@@ -78,7 +79,7 @@ const Footer = () => {
               ].map((link) => (
                 <li key={link.href}>
                   <a
-                    href={link.href}
+                    href={`${homePrefix}${link.href}`}
                     className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
                   >
                     {link.label}

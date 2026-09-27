@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { useLocation } from "react-router-dom";
 import ironLogo from "@/assets/iron-logo.svg";
 
-const Header = () => {
+const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -100,7 +100,7 @@ const Header = () => {
               size="sm"
               asChild
             >
-              <a href={"https://booking.svironmonkey.nl"} target="_blank">Book Now</a>
+              <a href={enquiryHref || "https://booking.svironmonkey.nl"} target={enquiryHref ? undefined : "_blank"} rel={enquiryHref ? undefined : "noopener noreferrer"}>{enquiryHref ? "Enquire" : "Book Now"}</a>
             </Button>
           </div>
 
@@ -148,10 +148,10 @@ const Header = () => {
               <li className="pt-4">
                 <Button variant="gold" size="default" className="w-full" asChild>
                   <a 
-                    href={isHomePage ? "#contact" : "/#contact"}
+                    href={enquiryHref || (isHomePage ? "#contact" : "/#contact")}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Book Now
+                    {enquiryHref ? "Enquire" : "Book Now"}
                   </a>
                 </Button>
               </li>

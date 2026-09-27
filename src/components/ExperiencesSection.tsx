@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import sunsetCruise from "@/assets/sunset-cruise.jpg";
 import heroYacht from "@/assets/hero-yacht.jpg";
@@ -8,6 +9,7 @@ import LazyImage from "./LazyImage";
 const experiences = [
   {
     title: "Day Trips",
+    href: "/day-charter",
     subtitle: "Magic of Mallorca",
     description:
       "Spend a perfect day exploring crystal-clear waters, hidden coves, and pristine beaches. Includes gourmet lunch and refreshments.",
@@ -16,6 +18,7 @@ const experiences = [
   },
   {
     title: "Sunset Cruises",
+    href: "/sunset-cruise",
     subtitle: "Golden Hour",
     description:
       "Watch the sun dip below the horizon while enjoying champagne and canapés. An unforgettable romantic experience.",
@@ -24,6 +27,7 @@ const experiences = [
   },
   {
     title: "Overnight Charter",
+    href: "/overnight-charter",
     subtitle: "Complete Luxury",
     description:
       "Embark on a week-long adventure exploring the entire Balearic archipelago. Fully customizable itinerary with overnight stays.",
@@ -81,15 +85,14 @@ const ExperiencesSection = () => {
                   <span className="text-xs tracking-wider text-muted-foreground uppercase">
                     {experience.duration}
                   </span>
-                  <a
-                    href={"https://booking.svironmonkey.nl/en"}
-                    target="_blank"
+                  <Link
+                    to={experience.href}
                     className="flex items-center gap-2 text-foreground text-sm font-medium hover:text-accent transition-colors group/link"
                     aria-label={`Learn more about ${experience.title}`}
                   >
                     Learn More
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" aria-hidden="true" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>
