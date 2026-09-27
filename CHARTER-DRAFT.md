@@ -11,13 +11,13 @@ The live website and main branch have not changed. The draft application files h
 - `/sunset-cruise`
 - `/overnight-charter`
 
-The homepage keeps its current layout and copy. Its three Learn More links now lead to these pages in the draft. Each page has a hero, experience description, suggested itinerary, practical information, FAQs, the shared enquiry widget and links to the other two experiences. Footer section links return to the homepage correctly. Vercel rewrites support directly opening the three new routes.
+The homepage's three Learn More links now lead to these pages in the draft. A partnership invitation for agents and charter brokers appears between pricing and contact, with a mailto link to `agency@svironmonkey.nl`. Each charter page has a hero, experience description, suggested itinerary, practical information, FAQs, the shared enquiry widget and links to the other two experiences. Footer section links return to the homepage correctly. Vercel rewrites support directly opening the three new routes.
 
 ## Shared availability and enquiry widget
 
 - Month calendar in Mallorca time, with available (green), unavailable (red) and please enquire (neutral) states.
 - Past dates and known unavailable dates cannot be selected.
-- Date, guest count and optional notes; overnight adds a return date.
+- Date, guest count and optional notes; overnight has labelled start and end date fields, a night count, and both dates in the enquiry.
 - Capacity options match the existing website: 12 day guests, 9 overnight guests.
 - For overnight enquiries, any known unavailable date from departure through return blocks the selection. This is deliberately conservative until turnaround and arrival/departure rules are agreed.
 - Email opens an unsent enquiry to `info@svironmonkey.nl`.
@@ -53,7 +53,9 @@ Missing dates/experiences, malformed responses, fetch failures, future timestamp
 - GitHub owner access verified in the authenticated browser; draft branch is published. The ChatGPT GitHub plugin remains unconnected.
 - Vercel preview works: https://sv-iron-monkey-git-draft-charte-720bc0-sv-iron-monkeys-projects.vercel.app/day-charter
 - All three pages render; day-charter selection generated correct email and WhatsApp enquiry links. No test enquiries were sent. Direct overnight-page reload works.
-- Google Photos access verified for svironmonkey@gmail.com. Albums located; replacements have not yet been selected or added.
+- Google Photos access verified for svironmonkey@gmail.com. Overnight now uses the boat's actual cabin photo (`rooms/bed3.png`) as its hero and the prepared breakfast table (`breakfast/bf1.png`) as its second image. Day charter uses daytime deck imagery; sunset hero retained.
+- Day charter copy confirms usually 8–10 hours, swimwear and a towel, with towel packages available on request. Overnight copy offers an alternative pickup by arrangement, with any repositioning cost confirmed in the quote.
+- No new prices have been invented or published. Seasonal starting rates, inclusions and optional extras still need owner input.
 - Real availability integration remains outstanding. An authoritative feed is required before dates can show green/red reliably.
 
 No cPanel, Resend or WhatsApp API credentials are needed for the two click-to-enquire buttons. The existing enquiry form and production integrations are unchanged. Use secure sign-in/connector prompts for access rather than passwords in chat.
