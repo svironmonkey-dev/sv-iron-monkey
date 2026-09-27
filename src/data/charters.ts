@@ -1,7 +1,8 @@
 import dayImage from "@/assets/yacht-deck.png";
 import sunsetImage from "@/assets/sunset-cruise.jpg";
-import overnightImage from "@/assets/hero-yacht.jpg";
-import cabinImage from "@/assets/yacht-cabin.jpg";
+import daytimeDetailImage from "@/assets/out/out3.png";
+import cabinHeroImage from "@/assets/rooms/bed3.png";
+import cabinImage from "@/assets/rooms/bed1.png";
 
 export type CharterSlug = "day-charter" | "sunset-cruise" | "overnight-charter";
 
@@ -32,9 +33,9 @@ export const charters: Record<CharterSlug, Charter> = {
     intro: "Leave the bustle of Palma behind for a private day of sailing, swimming and unhurried time together aboard SV Iron Monkey.",
     image: dayImage,
     imageAlt: "The open deck aboard SV Iron Monkey",
-    detailImage: overnightImage,
-    detailAlt: "SV Iron Monkey on the water",
-    duration: "A full day",
+    detailImage: daytimeDetailImage,
+    detailAlt: "The teak side deck of SV Iron Monkey overlooking a sunny Mallorca anchorage",
+    duration: "Usually 8–10 hours",
     mood: "Sail · Swim · Unwind",
     storyTitle: "Your own little escape.",
     story: "Find a comfortable spot on deck, feel the breeze and let the crew take care of the sailing. Your day can be as relaxed or as active as you like, with time at anchor to swim, enjoy lunch and simply be together.",
@@ -45,9 +46,9 @@ export const charters: Record<CharterSlug, Charter> = {
       { title: "Make the day yours", description: "Swim, relax or ask the crew about the water activities available. Make time for lunch with your chosen food and drinks arrangements." },
       { title: "Sail back to Palma", description: "Take in the views on the return journey, arriving at the agreed time." },
     ],
-    bring: ["Swimwear and a towel", "Sun protection and a hat", "Soft, non-marking shoes", "A light layer for the breeze"],
+    bring: ["Swimwear and a towel — towel packages are available on request", "Sun protection and a hat", "Soft, non-marking shoes", "A light layer for the breeze"],
     questions: [
-      { question: "How long is a day charter?", answer: "Allow a full day. We agree the exact departure and return times with you before booking, so the trip fits your plans." },
+      { question: "How long is a day charter?", answer: "A day charter usually lasts 8–10 hours. We agree the exact departure and return times with you before booking, so the trip fits your plans." },
       { question: "Can we swim or use the water toys?", answer: "Tell us what your group enjoys when you enquire. Swimming and water activities depend on the conditions, equipment availability and the captain's safety assessment." },
     ],
   },
@@ -82,23 +83,24 @@ export const charters: Record<CharterSlug, Charter> = {
     eyebrow: "More time. More possibilities.",
     headline: "Wake up somewhere beautiful.",
     intro: "Make SV Iron Monkey your home on the water. Take time to explore, linger at anchor and discover a slower rhythm around the Balearic Islands.",
-    image: overnightImage,
-    imageAlt: "SV Iron Monkey ready for a sailing escape",
+    image: cabinHeroImage,
+    imageAlt: "A teak-lined guest cabin with freshly prepared beds aboard SV Iron Monkey",
     detailImage: cabinImage,
     detailAlt: "A guest cabin aboard SV Iron Monkey",
     duration: "A stay shaped around you",
     mood: "Explore · Stay · Discover",
     storyTitle: "A different view each morning.",
     story: "Unpack, settle into life aboard and let the days find their rhythm. There is time for a swim before breakfast, an afternoon exploring or a quiet evening together. We plan your stay around your group, your interests and the time you have.",
-    route: "A shorter stay can focus on Mallorca's coast. With more time, we can discuss a wider Balearic itinerary. Distances, weather and suitable overnight stops guide the plan; we agree a realistic route together before your charter.",
+    route: "A shorter stay can focus on Mallorca's coast. With more time, we can discuss a wider Balearic itinerary. Distances, weather and suitable overnight stops guide the plan; we agree a realistic route together before your charter. A different pickup location can also be arranged on request, subject to the itinerary and availability. We confirm any repositioning costs in your quote.",
     moments: [
       { title: "Plan your escape", description: "Share your dates, group size and favourite ways to spend a day. We propose a route and sleeping arrangements." },
-      { title: "Make yourself at home", description: "Board in Palma, meet the crew and settle into your cabin before the safety briefing." },
+      { title: "Make yourself at home", description: "Board in Palma or at your agreed pickup location, meet the crew and settle into your cabin before the safety briefing." },
       { title: "Explore, then stay", description: "Enjoy time under way and at anchor, with meals and shore visits arranged around your agreed itinerary." },
       { title: "Wake up on the water", description: "Enjoy the next morning aboard before continuing your journey or returning at the agreed time." },
     ],
     bring: ["Soft luggage that is easy to stow", "Swimwear and comfortable layers", "Soft, non-marking shoes", "Personal essentials for your stay"],
     questions: [
+      { question: "Can we arrange a different pickup location?", answer: "Yes. Palma is our home port, but a different pickup location may be arranged to suit your trip. Tell us where you would like to board; we will confirm feasibility, timings and any repositioning costs before booking." },
       { question: "How many nights should we plan?", answer: "Tell us how long you would like to stay and what you hope to see. We will confirm available dates, any minimum stay and an itinerary that leaves time to enjoy the journey." },
       { question: "How are cabins and meals arranged?", answer: "We discuss your group's sleeping arrangements, food preferences and dietary requirements before booking. Your proposal confirms the cabin plan, catering and any additional costs." },
     ],
