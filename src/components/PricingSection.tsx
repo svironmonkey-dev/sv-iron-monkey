@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 
 const PricingSection = () => {
-  const navigate = useNavigate();
-
   return (
     <section id="pricing" className="section-padding bg-muted/30">
       <div className="container-elegant">
@@ -17,14 +15,14 @@ const PricingSection = () => {
           </h2>
           <div className="divider-gold mx-auto mb-6" />
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            Transparent pricing for unforgettable experiences. Choose from sunset cruises, full-day adventures, or week-long charters.
+            A sunset together, a full day at sea, or a little longer aboard. Explore our starting prices and make your charter your own.
           </p>
           <Button
             variant="gold"
             size="lg"
-            onClick={() => window.open("https://booking.svironmonkey.nl", "_blank")}
+            asChild
           >
-            View Pricing Plans
+            <Link to="/pricing">View Pricing Plans</Link>
           </Button>
         </div>
       </div>
