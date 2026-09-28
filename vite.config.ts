@@ -4,7 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode, isSsrBuild }) => ({
+  ssr: { noExternal: ["react-helmet-async"] },
   server: {
     host: "::",
     port: 5102,
@@ -16,7 +17,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
-    react(), 
+    react({ jsxImportSource: "@/i18n" }),
     mode === "development" && componentTagger(),
   ].filter(Boolean),
   resolve: {
@@ -28,9 +29,7 @@ export default defineConfig(({ mode }) => ({
     assetsInlineLimit: 4096, // Inline assets smaller than 4KB
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-        },
+        manualChunks: isSsrBuild ? undefined : { 'react-vendor': ['react', 'react-dom', 'react-router-dom'] },
         // Optimize asset file names
         assetFileNames: (assetInfo) => {
           if (!assetInfo.name) return 'assets/[name]-[hash][extname]';

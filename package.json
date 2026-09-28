@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:api": "tsx dev-server.ts",
     "dev:full": "npm run dev:api & npm run dev",
-    "build": "vite build",
+    "build": "node build-static.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
