@@ -30,7 +30,7 @@ const SEOHead = ({
       <html lang={getLanguage()} />
       {languages.map(code => <link key={code} rel="alternate" hrefLang={code} href={`https://www.svironmonkey.nl${languagePath(pathname, code)}`} />)}
       <link rel="alternate" hrefLang="x-default" href={`https://www.svironmonkey.nl${pathname}`} />
-      <meta property="og:locale" content={({ en: "en_GB", fr: "fr_FR", it: "it_IT", de: "de_DE" })[getLanguage()]} />
+      <meta property="og:locale" content={({ en: "en_GB", fr: "fr_FR", it: "it_IT", de: "de_DE", es: "es_ES" })[getLanguage()]} />
       {/* Primary Meta Tags */}
       <title>{title}</title>
       <meta name="title" content={title} />

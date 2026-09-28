@@ -7,7 +7,7 @@ await build({ build: { ssr: 'src/entry-server.tsx', outDir: '.ssr', rollupOption
 const { render } = await import('./.ssr/entry-server.js');
 const shell = await fs.readFile('dist/index.html', 'utf8');
 const routes = ['/', '/day-charter', '/sunset-cruise', '/overnight-charter', '/pricing', '/facilities', '/legal-notice', '/privacy-policy', '/cookie-policy'];
-const languages = ['en', 'fr', 'it', 'de'];
+const languages = ['en', 'fr', 'it', 'de', 'es'];
 const urls = [];
 let missing = [];
 for (const language of languages) for (const route of routes) {
@@ -23,7 +23,7 @@ for (const language of languages) for (const route of routes) {
 await fs.writeFile('.ssr/missing-translations.json', JSON.stringify(missing, null, 2));
 const escape = s => s.replaceAll('&','&amp;');
 const entries = urls.map(url => {
- const route = url.replace(/^\/(fr|it|de)(?=\/|$)/, '') || '/';
+ const route = url.replace(/^\/(fr|it|de|es)(?=\/|$)/, '') || '/';
  const alternates = languages.map(lang => `<xhtml:link rel="alternate" hreflang="${lang}" href="https://www.svironmonkey.nl${escape(lang === 'en' ? route : `/${lang}${route === "/" ? "" : route}`)}"/>`).join('');
  return `<url><loc>https://www.svironmonkey.nl${escape(url)}</loc>${alternates}<xhtml:link rel="alternate" hreflang="x-default" href="https://www.svironmonkey.nl${escape(route)}"/></url>`;
 });
