@@ -1,3 +1,4 @@
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ChevronLeft, X } from "lucide-react";
@@ -16,7 +17,8 @@ const Facilities = () => {
   const clickableFacilities = facilities.filter(f => f.clickable);
   
   const selectedFacility = clickableFacilities.find(f => f.id === selectedId) || clickableFacilities[0];
-  const [currentFacility, setCurrentFacility] = useState(selectedFacility);
+  const [currentFacility, setCurrentFacility] = useState(clickableFacilities[0]);
+  useEffect(() => { setCurrentFacility(selectedFacility); }, [selectedId]);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   const handleFacilitySelect = (facility: Facility) => {
@@ -34,6 +36,7 @@ const Facilities = () => {
       />
       <StructuredData type="facilities" />
       <div className="min-h-screen flex flex-col">
+      <div className="fixed top-5 right-5 z-50 bg-background/95 rounded-sm"><LanguageSwitcher /></div>
       <main className="flex-1 pt-20 pb-20 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Page Title with Back Button */}

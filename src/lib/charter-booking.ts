@@ -1,3 +1,4 @@
+import { dateLocale, t } from "@/i18n";
 import { z } from "zod";
 
 const dateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
@@ -24,7 +25,7 @@ export const addDays = (iso: string, days: number) => {
   return date.toISOString().slice(0, 10);
 };
 
-export const displayDate = (iso: string) => new Intl.DateTimeFormat("en-GB", {
+export const displayDate = (iso: string) => new Intl.DateTimeFormat(dateLocale(), {
   timeZone: "UTC", day: "numeric", month: "long", year: "numeric",
 }).format(new Date(`${iso}T12:00:00Z`));
 
@@ -38,6 +39,6 @@ export const getAvailability = (feed: Availability | null, date: string, charter
 };
 
 export const enquiryLinks = (message: string, title: string) => ({
-  email: `mailto:info@svironmonkey.nl?subject=${encodeURIComponent(`${title} enquiry`)}&body=${encodeURIComponent(message)}`,
+  email: `mailto:info@svironmonkey.nl?subject=${encodeURIComponent(`${title} — ${t("Your enquiry")}`)}&body=${encodeURIComponent(message)}`,
   whatsapp: `https://wa.me/34689573660?text=${encodeURIComponent(message)}`,
 });

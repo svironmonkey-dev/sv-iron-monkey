@@ -1,3 +1,4 @@
+import { dateLocale, t, formatMessage } from "@/i18n";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,7 @@ const statusClasses = {
 const statusLabels = { available: "Available", unavailable: "Unavailable", unknown: "Please enquire" };
 
 const CharterBooking = ({ slug }: { slug: CharterSlug }) => {
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(() => Number(typeof document !== "undefined" ? document.documentElement.dataset.buildTime : import.meta.env.VITE_BUILD_TIME) || Date.now());
   const today = dateInPalma(new Date(now));
   const [month, setMonth] = useState(() => today.slice(0, 7));
   const [selected, setSelected] = useState("");
@@ -43,7 +44,7 @@ const CharterBooking = ({ slug }: { slug: CharterSlug }) => {
   }, []);
 
   const monthDate = new Date(`${month}-01T12:00:00Z`);
-  const monthLabel = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric", timeZone: "UTC" }).format(monthDate);
+  const monthLabel = new Intl.DateTimeFormat(dateLocale(), { month: "long", year: "numeric", timeZone: "UTC" }).format(monthDate);
   const offset = (monthDate.getUTCDay() + 6) % 7;
   const days = new Date(Date.UTC(monthDate.getUTCFullYear(), monthDate.getUTCMonth() + 1, 0)).getUTCDate();
   const changeMonth = (delta: number) => {
@@ -68,8 +69,8 @@ const CharterBooking = ({ slug }: { slug: CharterSlug }) => {
   const allAvailable = selectedDates.length > 0 && selectedDates.every(date => statusFor(date) === "available");
   const valid = Boolean(selected && selected >= today && selected <= maxDate && !conflict && (!overnight || (returnDate > selected && returnDate <= maxDate)));
   const nights = valid && overnight ? Math.round((Date.parse(`${returnDate}T12:00:00Z`) - Date.parse(`${selected}T12:00:00Z`)) / 86_400_000) : 0;
-  const message = `Hello Iron Monkey,\n\nI would like to enquire about a ${charter.title.toLowerCase()}.\n\n${overnight ? "Start date" : "Preferred date"}: ${selected ? displayDate(selected) : "To be agreed"}${overnight && returnDate ? `\nEnd date: ${displayDate(returnDate)}` : ""}\nGuests: ${guests}\n${notes.trim() ? `\nRequests: ${notes.trim()}\n` : ""}\nPlease confirm availability, timings and a quote.\n\nThank you!`;
-  const links = enquiryLinks(message, charter.title);
+  const message = [t("Hello Iron Monkey,"), "", formatMessage("I would like to enquire about: {charter}.", { charter: t(charter.title) }), "", `${t(overnight ? "Start date" : "Preferred date")}: ${selected ? displayDate(selected) : t("To be agreed")}`, ...(overnight && returnDate ? [`${t("End date")}: ${displayDate(returnDate)}`] : []), `${t("Guests")}: ${guests}`, ...(notes.trim() ? ["", `${t("Requests")}: ${notes.trim()}`] : []), "", t("Please confirm availability, timings and a quote."), "", t("Thank you!")].join("\n");
+  const links = enquiryLinks(message, t(charter.title));
 
   return (
     <section id="enquire" className="section-padding scroll-mt-24" aria-labelledby="enquire-title">
@@ -78,7 +79,7 @@ const CharterBooking = ({ slug }: { slug: CharterSlug }) => {
           <p className="text-accent text-xs tracking-[0.3em] uppercase mb-4">Your private charter</p>
           <h2 id="enquire-title" className="font-serif text-4xl md:text-6xl font-light mb-6">Let's make it your own.</h2>
           <div className="divider-gold mx-auto mb-6" />
-          <p className="text-muted-foreground leading-relaxed">Choose your preferred {overnight ? "start and end dates" : "date"}, tell us who is coming, and enquire by email or WhatsApp.</p>
+          <p className="text-muted-foreground leading-relaxed">{overnight ? "Choose your preferred start and end dates, tell us who is coming, and enquire by email or WhatsApp." : "Choose your preferred date, tell us who is coming, and enquire by email or WhatsApp."}</p>
         </div>
         <div className="border border-border bg-card grid lg:grid-cols-2 max-w-5xl mx-auto">
           <div className="p-5 sm:p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-border min-w-0">
@@ -95,7 +96,7 @@ const CharterBooking = ({ slug }: { slug: CharterSlug }) => {
                 const status = statusFor(date);
                 const past = date < today;
                 const unavailable = status === "unavailable";
-                return <button type="button" key={date} disabled={past || date > maxDate || unavailable} aria-label={`${displayDate(date)}, ${past ? "Past date" : statusLabels[status]}`} aria-pressed={selected === date} onClick={() => selectStartDate(date)} className={`relative aspect-square min-h-9 border text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 disabled:cursor-not-allowed ${past || date > maxDate ? "text-muted-foreground/40 border-transparent" : statusClasses[status]} ${selected === date ? "ring-2 ring-primary ring-offset-1 font-semibold" : ""}`}>
+                return <button type="button" key={date} disabled={past || date > maxDate || unavailable} aria-label={`${displayDate(date)}, ${t(past ? "Past date" : statusLabels[status])}`} aria-pressed={selected === date} onClick={() => selectStartDate(date)} className={`relative aspect-square min-h-9 border text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 disabled:cursor-not-allowed ${past || date > maxDate ? "text-muted-foreground/40 border-transparent" : statusClasses[status]} ${selected === date ? "ring-2 ring-primary ring-offset-1 font-semibold" : ""}`}>
                   {i + 1}{!past && !unavailable && selected === date && <span className="sr-only">, selected</span>}
                 </button>;
               })}
@@ -113,8 +114,8 @@ const CharterBooking = ({ slug }: { slug: CharterSlug }) => {
                 <div className="min-w-0"><label htmlFor="charter-start" className="block text-xs uppercase tracking-wider mb-2">Start date</label><input id="charter-start" type="date" min={today} max={addDays(maxDate, -1)} value={selected} onChange={event => selectStartDate(event.target.value)} className="w-full min-w-0 border border-border bg-background p-3 text-sm" /></div>
                 <div className="min-w-0"><label htmlFor="charter-return" className="block text-xs uppercase tracking-wider mb-2">End date</label><input id="charter-return" type="date" min={selected ? addDays(selected, 1) : addDays(today, 1)} max={maxDate} value={returnDate} onChange={event => setReturnDate(event.target.value)} className="w-full min-w-0 border border-border bg-background p-3 text-sm" /></div>
               </div>
-              <p className="text-xs text-muted-foreground mb-5" aria-live="polite">{nights ? `${nights} ${nights === 1 ? "night" : "nights"} aboard. Boarding and return times are agreed in your quote.` : "Choose your start date in the calendar or enter both dates here."}</p>
-            </> : <p className="text-sm mb-5" aria-live="polite">{selected ? `Selected date: ${displayDate(selected)}` : "Select a date in the calendar to begin."}</p>}
+              <p className="text-xs text-muted-foreground mb-5" aria-live="polite">{nights ? formatMessage(nights === 1 ? "{count} night aboard. Boarding and return times are agreed in your quote." : "{count} nights aboard. Boarding and return times are agreed in your quote.", { count: nights }) : "Choose your start date in the calendar or enter both dates here."}</p>
+            </> : <p className="text-sm mb-5" aria-live="polite">{selected ? formatMessage("Selected date: {date}", { date: displayDate(selected) }) : "Select a date in the calendar to begin."}</p>}
             <label htmlFor="charter-guests" className="block text-xs uppercase tracking-wider mb-2">Guests</label>
             <select id="charter-guests" value={guests} onChange={event => setGuests(event.target.value)} className="w-full border border-border bg-background p-3 text-sm mb-5">{Array.from({ length: overnight ? 9 : 12 }, (_, i) => <option key={i} value={i + 1}>{i + 1} {i === 0 ? "guest" : "guests"}</option>)}</select>
             <label htmlFor="charter-notes" className="block text-xs uppercase tracking-wider mb-2">Anything special? <span className="normal-case tracking-normal text-muted-foreground">(optional)</span></label>

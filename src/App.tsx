@@ -1,3 +1,5 @@
+import { StaticRouter } from "react-router-dom/server";
+import { getLanguage } from "./i18n";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -31,14 +33,17 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => (
-  <HelmetProvider>
+const App = ({ url, helmetContext = {} }: { url?: string; helmetContext?: object }) => {
+  const Router = url ? StaticRouter : BrowserRouter;
+  const basename = getLanguage() === "en" ? "/" : `/${getLanguage()}`;
+  return (
+  <HelmetProvider context={helmetContext}>
     <QueryClientProvider client={queryClient}>
       <CookieConsentProvider>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <Router basename={basename} location={url}>
             <LoadingOverlay />
             <ScrollRestoration />
             <Routes>
@@ -55,7 +60,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
             <CookieConsentBanner />
-          </BrowserRouter>
+          </Router>
         </TooltipProvider>
         <MetaPixel />
         <ConditionalAnalytics />
@@ -64,5 +69,6 @@ const App = () => (
     </QueryClientProvider>
   </HelmetProvider>
 );
+};
 
 export default App;

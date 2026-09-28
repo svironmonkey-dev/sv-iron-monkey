@@ -1,3 +1,4 @@
+import LanguageSwitcher from "./LanguageSwitcher";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
@@ -9,6 +10,7 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  const isPlainPage = ["/legal-notice", "/privacy-policy", "/cookie-policy"].includes(location.pathname);
   const isFacilitiesPage = location.pathname === "/facilities";
 
   useEffect(() => {
@@ -38,21 +40,21 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
           ? "-translate-y-full opacity-0" 
           : "translate-y-0 opacity-100"
       } ${
-        isScrolled || isMobileMenuOpen
+        isScrolled || isMobileMenuOpen || isPlainPage
           ? "bg-background/95 backdrop-blur-sm shadow-sm"
           : "bg-transparent"
       }`}
       role="banner"
     >
       <div className="container-elegant">
-        <nav className="flex items-center justify-between h-20 md:h-24 px-6 md:px-12 lg:px-20" aria-label="Main navigation">
+        <nav className="flex items-center justify-between gap-2 h-20 md:h-24 px-6 md:px-12 lg:px-20" aria-label="Main navigation">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3">
             <img 
               src={ironLogo} 
               alt="SV Iron Monkey Logo" 
               className={`h-10 w-10 transition-all duration-300 ${
-                isScrolled || isMobileMenuOpen ? "brightness-0" : ""
+                isScrolled || isMobileMenuOpen || isPlainPage ? "brightness-0" : ""
               }`}
               width="40"
               height="40"
@@ -60,14 +62,14 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
             <div className="flex flex-col items-start">
               <span
                 className={`font-serif text-xl md:text-2xl font-semibold tracking-wide transition-colors duration-300 ${
-                  isScrolled || isMobileMenuOpen ? "text-foreground" : "text-primary-foreground"
+                  isScrolled || isMobileMenuOpen || isPlainPage ? "text-foreground" : "text-primary-foreground"
                 }`}
               >
                 Iron Monkey
               </span>
               <span
                 className={`text-[10px] tracking-[0.3em] uppercase transition-colors duration-300 ${
-                  isScrolled || isMobileMenuOpen ? "text-muted-foreground" : "text-primary-foreground/70"
+                  isScrolled || isMobileMenuOpen || isPlainPage ? "text-muted-foreground" : "text-primary-foreground/70"
                 }`}
               >
                 Sailing Vessel
@@ -76,13 +78,13 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
           </a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center gap-10" role="list">
+          <ul className="hidden xl:flex items-center gap-5 xl:gap-7" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   className={`text-xs tracking-[0.15em] uppercase font-medium transition-colors duration-300 link-underline ${
-                    isScrolled
+                    isScrolled || isPlainPage
                       ? "text-foreground hover:text-accent"
                       : "text-primary-foreground/90 hover:text-primary-foreground"
                   }`}
@@ -94,9 +96,9 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
           </ul>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <Button
-              variant={isScrolled || isMobileMenuOpen ? "gold" : "hero"}
+              variant={isScrolled || isMobileMenuOpen || isPlainPage ? "gold" : "hero"}
               size="sm"
               asChild
             >
@@ -104,9 +106,11 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
             </Button>
           </div>
 
+          <LanguageSwitcher light={!isScrolled && !isMobileMenuOpen && !isPlainPage} />
+
           {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden p-2"
+            className="xl:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
@@ -115,14 +119,14 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
             {isMobileMenuOpen ? (
               <X
                 className={`w-6 h-6 transition-colors ${
-                  isScrolled || isMobileMenuOpen ? "text-foreground" : "text-primary-foreground"
+                  isScrolled || isMobileMenuOpen || isPlainPage ? "text-foreground" : "text-primary-foreground"
                 }`}
                 aria-hidden="true"
               />
             ) : (
               <Menu
                 className={`w-6 h-6 transition-colors ${
-                  isScrolled || isMobileMenuOpen ? "text-foreground" : "text-primary-foreground"
+                  isScrolled || isMobileMenuOpen || isPlainPage ? "text-foreground" : "text-primary-foreground"
                 }`}
                 aria-hidden="true"
               />
@@ -132,7 +136,7 @@ const Header = ({ enquiryHref }: { enquiryHref?: string }) => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div id="mobile-menu" className="lg:hidden bg-background backdrop-blur-sm border-t border-border animate-fade-in">
+          <div id="mobile-menu" className="xl:hidden bg-background backdrop-blur-sm border-t border-border animate-fade-in">
             <ul className="flex flex-col py-6 px-6" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>
