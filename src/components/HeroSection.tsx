@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
+import heroPoster from "@/assets/hero-yacht.jpg";
 import heroVideo from "@/assets/hero-yacht-high.mp4";
 import { useEffect, useRef } from "react";
 
@@ -58,6 +59,7 @@ const HeroSection = () => {
         <video
           ref={videoRef}
           src={heroVideo}
+          poster={heroPoster}
           autoPlay
           loop
           muted
