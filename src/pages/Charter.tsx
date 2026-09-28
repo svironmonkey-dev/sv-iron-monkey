@@ -28,7 +28,7 @@ const Charter = ({ slug }: { slug: CharterSlug }) => {
             <p className="text-gold-light text-xs tracking-[0.3em] uppercase mb-5">{charter.eyebrow}</p>
             <h1 className="font-serif font-light text-5xl md:text-7xl lg:text-8xl max-w-4xl leading-[1.05] mb-6">{charter.headline}</h1>
             <p className="text-white/90 max-w-xl leading-relaxed mb-8">{charter.intro}</p>
-            <Button variant="gold" size="lg" className="w-full sm:w-auto px-5 sm:px-10 text-xs sm:text-sm" asChild><a href="#enquire">Plan your {charter.title.toLowerCase()}<ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" /></a></Button>
+            <Button variant="gold" size="lg" className="w-full sm:w-auto px-5 sm:px-10 text-xs sm:text-sm" asChild><a href="#enquire">{`Plan your ${charter.title.toLowerCase()}`}<ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" /></a></Button>
           </div>
         </section>
 

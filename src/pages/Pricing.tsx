@@ -63,7 +63,7 @@ const Pricing = () => (
                 <p className="text-sm text-muted-foreground mb-8">{plan.detail}</p>
                 <p className="text-accent text-xs tracking-[0.2em] uppercase mb-2">From</p>
                 <p className="font-serif text-5xl md:text-6xl font-light mb-2">{plan.price}</p>
-                <p className="text-xs text-muted-foreground mb-7">per private {plan.slug === "overnight-charter" ? "overnight charter" : "charter"}</p>
+                <p className="text-xs text-muted-foreground mb-7">{plan.slug === "overnight-charter" ? "per private overnight charter" : "per private charter"}</p>
                 <ul className="border-t border-border pt-6 mb-8 space-y-3 text-sm text-muted-foreground">
                   <li>{plan.note}</li><li>{plan.guests}</li><li>Departure from Palma de Mallorca</li>
                 </ul>
