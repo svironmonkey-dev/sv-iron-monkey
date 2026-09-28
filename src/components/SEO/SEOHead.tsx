@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+import { getLanguage, languages, languagePath, t } from "@/i18n";
 import { Helmet } from "react-helmet-async";
 
 interface SEOHeadProps {
@@ -19,14 +21,20 @@ const SEOHead = ({
   ogType = "website",
   noindex = false,
 }: SEOHeadProps) => {
-  const canonical = canonicalUrl.replace("https://svironmonkey.nl", "https://www.svironmonkey.nl");
+  const { pathname } = useLocation();
+  const canonical = `https://www.svironmonkey.nl${languagePath(pathname)}`;
+  title = t(title);
+  description = t(description);
   return (
     <Helmet>
+      <html lang={getLanguage()} />
+      {languages.map(code => <link key={code} rel="alternate" hrefLang={code} href={`https://www.svironmonkey.nl${languagePath(pathname, code)}`} />)}
+      <link rel="alternate" hrefLang="x-default" href={`https://www.svironmonkey.nl${pathname}`} />
+      <meta property="og:locale" content={({ en: "en_GB", fr: "fr_FR", it: "it_IT", de: "de_DE" })[getLanguage()]} />
       {/* Primary Meta Tags */}
       <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
       
       {/* Canonical URL */}
