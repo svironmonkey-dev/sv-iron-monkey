@@ -1,11 +1,8 @@
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App.tsx";
+import { languageFromPath, setLanguage } from "./i18n";
 import "./index.css";
-
-// Suppress console errors in production
-if (import.meta.env.PROD) {
-  console.error = () => {};
-  console.warn = () => {};
-}
-
-createRoot(document.getElementById("root")!).render(<App />);
+setLanguage(languageFromPath(window.location.pathname));
+const root = document.getElementById("root")!;
+if (root.hasChildNodes()) hydrateRoot(root, <App />);
+else createRoot(root).render(<App />);
