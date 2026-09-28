@@ -10,6 +10,9 @@ const LanguageFlag = ({ code }: { code: Language }) => (
       <path stroke="#C8102E" strokeWidth="3" d="m0 0 60 40M60 0 0 40" />
       <path stroke="#fff" strokeWidth="13" d="M30 0v40M0 20h60" />
       <path stroke="#C8102E" strokeWidth="8" d="M30 0v40M0 20h60" />
+    </> : code === 'es' ? <>
+      <path fill="#AA151B" d="M0 0h60v40H0z" />
+      <path fill="#F1BF00" d="M0 10h60v20H0z" />
     </> : code === 'de' ? <>
       <path fill="#000" d="M0 0h60v14H0z" />
       <path fill="#DD0000" d="M0 13.333h60v13.334H0z" />
